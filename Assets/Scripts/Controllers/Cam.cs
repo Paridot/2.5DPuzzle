@@ -11,16 +11,16 @@ public class Cam : MonoBehaviour
 
     CamPosition startTransitionPos;
     CamPosition endTransitionPos;
-    Structs.State view;
-    bool isTransitioning;
 
     private float transitionTime;
     private float timeSpent;
 
+    GameState gameState;
+
 
     private void Start()
     {
-        GameState gameState = GameObject.Find("StateController").GetComponent<GameState>();
+        gameState = GameObject.FindWithTag("GameState").GetComponent<GameState>();
 
         if (gameState != null)
         {
@@ -30,7 +30,7 @@ public class Cam : MonoBehaviour
     
     void Update()
     {
-        if (!isTransitioning)
+        if (!gameState.isTransitioning)
         {
             UpdateView();
         } 
@@ -39,7 +39,6 @@ public class Cam : MonoBehaviour
     private void GameState_OnTransitionStart(float time, Structs.State v)
     {
         transitionTime = time;
-        view = v;
         startTransitionPos = GetPosition((Structs.State)(1 - (int)v));
         endTransitionPos = GetPosition(v);
         
@@ -51,7 +50,6 @@ public class Cam : MonoBehaviour
     {
 
         timeSpent = 0;
-        isTransitioning = true;
         while (timeSpent <= transitionTime)
         {
             var lerpPoint = timeSpent/transitionTime;
@@ -60,8 +58,6 @@ public class Cam : MonoBehaviour
             timeSpent += Time.unscaledDeltaTime;
             yield return null;
         }
-
-        isTransitioning = false;
     }
 
 
@@ -85,8 +81,8 @@ public class Cam : MonoBehaviour
 
     void UpdateView()
     {
-        transform.position = GetPosition(view).position;
-        transform.rotation = GetPosition(view).rotation;
+        transform.position = GetPosition(gameState.state).position;
+        transform.rotation = GetPosition(gameState.state).rotation;
     }
 }
 
