@@ -8,6 +8,13 @@ public class Grid3D : MonoBehaviour
 
     private List<Vector3Int> points;
 
+
+    //Poor performance O(n^3) where n is 1 dimension of the cube. 
+    //Each dimension is only meant to be between 10 and 40 units large 
+    //so this shouldn't impact performance when it is called infrequently 
+    //(5000-10000 points in list).
+
+    //Should probably reimplement this if this becomes used more frequently
     public Vector3 GetNearestPoint(Vector3 position)
     {
         var distance = Vector3.Distance(points[0], position);
