@@ -543,7 +543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheet: {fileID: 3165540369117668458, guid: 5474438e5172ee148a5c469ab1620dfd, type: 3}
-  sheet1: {fileID: 3165540369117668458, guid: 13d2d12f1170bd247881b40bdb32ca17, type: 3}
 --- !u!4 &1594155660
 Transform:
   m_ObjectHideFlags: 0
@@ -552,7 +551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594155658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -0.5}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
