@@ -44,7 +44,8 @@ public class GridMovement : MonoBehaviour
 
     IEnumerator DriftToCellCenter()
     {
-        var cellPos = map.GetNearestPoint(transform.position);
+        var cell = map.GetNearestPoint(transform.position);
+        var cellPos = map.CellToWorldPoint(cell);
         var startPos = transform.position;
 
         float driftingSince = 0;

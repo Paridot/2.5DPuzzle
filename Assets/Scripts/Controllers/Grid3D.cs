@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grid3D : MonoBehaviour
 {
-    [SerializeField] public Vector3 gridSize;
+    public Vector3 gridSize;
 
     private List<Vector3Int> points;
 
@@ -15,13 +15,15 @@ public class Grid3D : MonoBehaviour
     //(5000-10000 points in list).
 
     //Should probably reimplement this if this becomes used more frequently
-    public Vector3 GetNearestPoint(Vector3 position)
+    public Vector3Int GetNearestPoint(Vector3 position)
     {
+        
         var distance = Vector3.Distance(points[0], position);
-        Vector3 closestPoint = points[0];
+        Vector3Int closestPoint = points[0];
         foreach (var point in points)
         {
-            var testDist = Vector3.Distance(point, position);
+
+            var testDist = Vector3.Distance(CellToWorldPoint(point), position);
             if (distance > testDist)
             {
                 distance = testDist;
@@ -29,6 +31,13 @@ public class Grid3D : MonoBehaviour
             }
         }
         return closestPoint;
+    }
+
+    public Vector3 CellToWorldPoint(Vector3Int point)
+    {
+        var mapPos = transform.position;
+        var worldPoint = point + mapPos; 
+        return worldPoint;
     }
 
     private void Start() {

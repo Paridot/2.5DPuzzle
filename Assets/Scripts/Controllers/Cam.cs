@@ -17,6 +17,8 @@ public class Cam : MonoBehaviour
 
     GameState gameState;
 
+    Vector3 gridSize;
+
 
     private void Start()
     {
@@ -26,6 +28,8 @@ public class Cam : MonoBehaviour
         {
             gameState.OnTransitionStart += GameState_OnTransitionStart;
         }
+
+        gridSize = GameObject.FindWithTag("Map").GetComponent<Grid3D>().gridSize;
     }
     
     void Update()
@@ -70,7 +74,7 @@ public class Cam : MonoBehaviour
             pos.rotation = Quaternion.Euler(90, 0, 0);
             pos.position = new Vector3(subPos.x, subPos.y + viewDistance, subPos.z);
         }
-        else
+        else //Side View
         {
             pos.rotation = Quaternion.Euler(0, -90, 0);
             pos.position = new Vector3(subPos.x + viewDistance, subPos.y, subPos.z);
