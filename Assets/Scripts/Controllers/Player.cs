@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Types;
 
 public class Player : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void GameState_OnTransitionStart(float time, Structs.State v)
+    private void GameState_OnTransitionStart(float time, State v)
     {
         transitionTime = time;
         StartCoroutine(Transition());

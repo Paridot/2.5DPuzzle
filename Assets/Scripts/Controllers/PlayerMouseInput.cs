@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Types;
 
 public class PlayerMouseInput : MonoBehaviour, IMover
 {
@@ -38,7 +39,7 @@ public class PlayerMouseInput : MonoBehaviour, IMover
 
         Vector3 playerPos = cam.WorldToScreenPoint(transform.position);
 
-        if (gameState.state == Structs.State.Top)
+        if (gameState.state == State.Top)
         {
             mousePos.z = mousePos.y;
             playerPos.z = playerPos.y;
