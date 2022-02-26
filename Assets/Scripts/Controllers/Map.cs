@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Types;
 
 public class Map : MonoBehaviour
 {
@@ -72,7 +73,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    private void GameState_OnTransitionStart(float time, Structs.State view)
+    private void GameState_OnTransitionStart(float time, State view)
     {
 
     }

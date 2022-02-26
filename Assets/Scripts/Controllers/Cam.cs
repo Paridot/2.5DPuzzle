@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Types;
 using UnityEngine;
 
 public class Cam : MonoBehaviour
@@ -40,10 +41,10 @@ public class Cam : MonoBehaviour
         } 
     }
 
-    private void GameState_OnTransitionStart(float time, Structs.State v)
+    private void GameState_OnTransitionStart(float time, State v)
     {
         transitionTime = time;
-        startTransitionPos = GetPosition((Structs.State)(1 - (int)v));
+        startTransitionPos = GetPosition((State)(1 - (int)v));
         endTransitionPos = GetPosition(v);
         
         StartCoroutine(Transition());
@@ -65,11 +66,11 @@ public class Cam : MonoBehaviour
     }
 
 
-    CamPosition GetPosition(Structs.State v)
+    CamPosition GetPosition(State v)
     {
         var subPos = subject.transform.position;
         CamPosition pos = new CamPosition();
-        if (v == Structs.State.Top)
+        if (v == State.Top)
         {
             pos.rotation = Quaternion.Euler(90, 0, 0);
             pos.position = new Vector3(subPos.x, subPos.y + viewDistance, subPos.z);

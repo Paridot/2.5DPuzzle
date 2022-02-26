@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Types;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
 
-    public delegate void TransitionEvent(float time, Structs.State view);
+    public delegate void TransitionEvent(float time, State view);
     public event TransitionEvent OnTransitionStart;
 
     public struct Directions
@@ -25,7 +26,7 @@ public class GameState : MonoBehaviour
 
     public Directions directions {get; private set;}
 
-    public Structs.State state {get; private set;}
+    public State state {get; private set;}
     public bool isTransitioning {get; private set;} 
 
     [SerializeField] float transitionTime;
@@ -42,10 +43,10 @@ public class GameState : MonoBehaviour
         SetDirections(state);
     }
 
-    private void GameState_OnTransitionStart(float time, Structs.State view)
+    private void GameState_OnTransitionStart(float time, State view)
     {
         //inverse state
-        state = (Structs.State)(1 - (int)state);
+        state = (State)(1 - (int)state);
 
         StartCoroutine(Transition());
     }
@@ -71,7 +72,7 @@ public class GameState : MonoBehaviour
     {
         if (!isTransitioning && TransitionInitiated())
         {
-            OnTransitionStart?.Invoke(transitionTime, (Structs.State)(1 - (int)state));
+            OnTransitionStart?.Invoke(transitionTime, (State)(1 - (int)state));
         }
     }
 
@@ -85,9 +86,9 @@ public class GameState : MonoBehaviour
         return false;
     }
 
-    void SetDirections(Structs.State s)
+    void SetDirections(State s)
     {
-        if (s == Structs.State.Top)
+        if (s == State.Top)
         {
             directions = new Directions(
                 Vector3.forward,
