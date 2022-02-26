@@ -38,9 +38,6 @@ public class Map : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(90, 0, 0);
             var newSheet = Instantiate(sheet, new Vector3(grid.gridSize.x / 2, y, grid.gridSize.z / 2) + offset, rotation, transform);
 
-            // var newGridLine = Instantiate(gridLine,new Vector3(grid.gridSize.x/2, y, grid.gridSize.z/2)+offset, rotation, transform);
-
-            // newGridLine.transform.localScale = new Vector3(newGridLine.transform.localScale.x, thinScale *(1/grid.gridSize.y),thinScale * (1/grid.gridSize.z));
         }
 
         for (int y = 0; y <= grid.gridSize.y; y++)
