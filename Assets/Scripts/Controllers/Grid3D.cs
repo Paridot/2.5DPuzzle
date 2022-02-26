@@ -22,7 +22,6 @@ public class Grid3D : MonoBehaviour
         Vector3Int closestPoint = points[0];
         foreach (var point in points)
         {
-
             var testDist = Vector3.Distance(CellToWorldPoint(point), position);
             if (distance > testDist)
             {

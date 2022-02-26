@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  driftTime: 0.5
+  driftTime: 0.25
 --- !u!114 &1089516630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheet: {fileID: 3165540369117668458, guid: 5474438e5172ee148a5c469ab1620dfd, type: 3}
+  gridLine: {fileID: 2633975727802307714, guid: ee53f8a66fb56c64f8d654ab35bfcac6, type: 3}
 --- !u!4 &1594155660
 Transform:
   m_ObjectHideFlags: 0
@@ -551,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594155658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.5, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -569,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1c703332179a84faad054809b0c0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 30, y: 30, z: 30}
+  gridSize: {x: 10, y: 10, z: 10}
 --- !u!1 &1821743827
 GameObject:
   m_ObjectHideFlags: 0
