@@ -55,11 +55,16 @@ public class Cam : MonoBehaviour
     {
 
         timeSpent = 0;
+        var prevLerpPoint = 0f;
         while (timeSpent <= transitionTime)
         {
             var lerpPoint = timeSpent/transitionTime;
-            transform.position = Vector3.Lerp(startTransitionPos.position, endTransitionPos.position, lerpPoint);
+            // transform.position = Vector3.Lerp(startTransitionPos.position, endTransitionPos.position, lerpPoint);
             transform.rotation = Quaternion.Lerp(startTransitionPos.rotation, endTransitionPos.rotation, lerpPoint);
+            var angle = (90 / transitionTime);
+            if (gameState.state == State.Side) angle *= -1;
+            transform.RotateAround(subject.transform.position, Vector3.forward, angle * Time.unscaledDeltaTime);
+            prevLerpPoint = lerpPoint;
             timeSpent += Time.unscaledDeltaTime;
             yield return null;
         }
