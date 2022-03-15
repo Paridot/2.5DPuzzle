@@ -16,7 +16,7 @@ public class PlayerKeyInput : MonoBehaviour, IMover
     }
 
     private void Update() {
-        if(!gameState.isTransitioning) CheckMoveInput();
+        CheckMoveInput();
     }
 
     private void CheckMoveInput()
